@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace DVLD_DataAccess
 {
@@ -347,7 +348,13 @@ namespace DVLD_DataAccess
         {
 
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+
+            //SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string ConnectionString = ConfigurationManager.ConnectionStrings["DVLDConnectionString"].ConnectionString;
+
+            SqlConnection connection = new SqlConnection(ConnectionString);
 
             string query = 
               @"SELECT People.PersonID, People.NationalNo,

@@ -121,6 +121,7 @@ namespace DVLD_DataAccess
         {
             bool isFound = false;
 
+
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "SELECT * FROM Users WHERE Username = @Username and Password=@Password;";
