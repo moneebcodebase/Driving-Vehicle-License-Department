@@ -1,0 +1,54 @@
+#########################################
+# Ignore build and temp files
+#########################################
+
+# Build output
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Local settings
+.vs/
+.vscode/
+.idea/
+
+# NuGet packages
+packages/
+*.nupkg
+project.lock.json
+
+# Build logs and debug
+*.log
+*.pdb
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Backup and temp
+*.tmp
+*.cache
+*.bak   # Ignore all .bak files by default
+!Database/DVLD.bak  # EXCEPTION: keep this specific file
+
+# Database development files (ignored)
+*.mdf
+*.ldf
+*.dbmdl
+
+# JetBrains / Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Publish settings
+*.PublishSettings
+
+# Upgrade reports and backups
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.*
