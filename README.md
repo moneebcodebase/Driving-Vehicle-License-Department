@@ -44,14 +44,14 @@ FROM DISK = 'D:\YourProjectPath\Database\DVLD.bak'
 WITH MOVE 'DVLD' TO 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\DVLD.mdf',
      MOVE 'DVLD_log' TO 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\DVLD_log.ldf',
      REPLACE;
-
+```
 
 > 💡 Make sure to adjust the file paths (`DISK`, `MOVE`) according to where you saved the `DVLD.bak` and your SQL Server instance directories.
 
----
+
 
 ### 2. 🛠️ Run the Application
-
+---
  Note:To allow the application to connect to your local SQL Server instance, you must update the connection string in the App.config file.
 
 1- Navigate to the DVLD Folder.
