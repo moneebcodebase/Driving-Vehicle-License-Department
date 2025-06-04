@@ -89,13 +89,16 @@ WITH MOVE 'DVLD' TO 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\M
 
 ## 📁 Project Structure
 
+```
 DVLD/
-├── DVLD/                              # Presentation Layer (WinForms UI)
-├── DVLD_Business/                     # Business Logic Layer
-├── DVLD_DataAccess/                   # Data Access Layer (Database connection & queries)
-├── Database/                          # Contains DVLD.bak SQL Backup File
-└── README.md                          # Project documentation
-└── DVLD DVLD Relational Schema.png    # Database Relational Schema Diagram
+├── DVLD/                        # Presentation Layer (WinForms UI)
+├── DVLD_Business/               # Business Logic Layer
+├── DVLD_DataAccess/             # Data Access Layer (DB connection & queries)
+├── Database/                    # Contains DVLD.bak SQL Backup File
+│── DVLD Relational Schema.png   # Database Relational Schema Diagram
+├── README.md                    # Project documentation
+```
+
 
 
 
