@@ -90,8 +90,8 @@ namespace DVLD.User
             //the following code will not be executed if the person was not found
             lblUserID.Text = _User.UserID.ToString();
             txtUserName.Text = _User.UserName;
-            txtPassword.Text = _User.Password;
-            txtConfirmPassword.Text = _User.Password;
+            txtPassword.Text = clsGlobal.Decryption(_User.Password);
+            txtConfirmPassword.Text = clsGlobal.Decryption(_User.Password);
             chkIsActive.Checked = _User.IsActive;
             ctrlPersonCardWithFilter1.LoadPersonInfo(_User.PersonID);
         }
@@ -119,7 +119,7 @@ namespace DVLD.User
 
             _User.PersonID = ctrlPersonCardWithFilter1.PersonID;
             _User.UserName = txtUserName.Text.Trim();
-            _User.Password = txtPassword.Text.Trim();
+            _User.Password = clsGlobal.Encryption(txtPassword.Text.Trim());
             _User.IsActive = chkIsActive.Checked;
 
 

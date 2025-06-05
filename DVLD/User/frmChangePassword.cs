@@ -66,7 +66,7 @@ namespace DVLD.User
                 errorProvider1.SetError(txtCurrentPassword, null);
             };
 
-            if (_User.Password != txtCurrentPassword.Text.Trim())
+            if (clsGlobal.Decryption(_User.Password) != txtCurrentPassword.Text.Trim())
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtCurrentPassword, "Current password is wrong!");
@@ -117,7 +117,7 @@ namespace DVLD.User
                 return;
             }
 
-            _User.Password = txtNewPassword.Text;
+            _User.Password = clsGlobal.Encryption(txtNewPassword.Text);
 
             if (_User.Save())
             {

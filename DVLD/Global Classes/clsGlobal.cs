@@ -29,13 +29,13 @@ namespace DVLD.Classes
                 //incase the username is empty, delete the file
                 if (Username=="" && File.Exists(filePath)) 
                 { 
-                     File.Delete(filePath);
+                    File.Delete(filePath);
                     return true;
 
                 }
 
                 // concatonate username and passwrod withe seperator.
-                string dataToSave = Username + "#//#"+Password ;
+                string dataToSave = Username + "#//#"+Encryption(Password);
 
                 // Create a StreamWriter to write to the file
                 using (StreamWriter writer = new StreamWriter(filePath))
@@ -51,7 +51,7 @@ namespace DVLD.Classes
                MessageBox.Show ($"An error occurred: {ex.Message}");
                 return false;
             }
-
+            
         }
 
         public static bool GetStoredCredential(ref string Username, ref string Password)
@@ -79,7 +79,7 @@ namespace DVLD.Classes
                             string[] result = line.Split(new string[] { "#//#" }, StringSplitOptions.None);
 
                             Username = result[0];
-                            Password = result[1];
+                            Password = Decryption(result[1]);
                         }
                         return true;
                     }
@@ -95,6 +95,39 @@ namespace DVLD.Classes
                 return false;   
             }
 
+        }
+
+
+        public static string Encryption(string Password)
+        {
+            string EncryptedPassword = "";
+
+
+            foreach (char c in Password)
+            {
+                char NewC = (char)(c + 12);
+
+                EncryptedPassword = EncryptedPassword + NewC;
+            }
+
+
+            return EncryptedPassword;
+        }
+
+        public static string Decryption(string Password)
+        {
+            string EncryptedPassword = "";
+
+
+            foreach (char c in Password)
+            {
+                char NewC = (char)(c - 12);
+
+                EncryptedPassword = EncryptedPassword + NewC;
+            }
+
+
+            return EncryptedPassword;
         }
     }
 }

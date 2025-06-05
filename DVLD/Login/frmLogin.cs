@@ -27,7 +27,7 @@ namespace DVLD.Login
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            clsUser user= clsUser.FindByUsernameAndPassword(txtUserName.Text.Trim(),txtPassword.Text.Trim());
+            clsUser user= clsUser.FindByUsernameAndPassword(txtUserName.Text.Trim(),clsGlobal.Encryption(txtPassword.Text.Trim()));
 
             if (user != null) 
             { 
