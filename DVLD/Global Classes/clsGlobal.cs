@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_Buisness;
+using Microsoft.Win32;
 
 
 namespace DVLD.Classes
@@ -16,85 +17,63 @@ namespace DVLD.Classes
 
         public static bool RememberUsernameAndPassword(string Username, string Password)
         {
+            //Registry path
+            string RegPath = @"HKEY_CURRENT_USER\Software\DVLD";
 
             try
             {
-                //this will get the current project directory folder.
-                string currentDirectory = System.IO.Directory.GetCurrentDirectory();
-
-
-                // Define the path to the text file where you want to save the data
-                string filePath = currentDirectory + "\\data.txt";
-
-                //incase the username is empty, delete the file
-                if (Username=="" && File.Exists(filePath)) 
-                { 
-                    File.Delete(filePath);
-                    return true;
-
-                }
-
-                // concatonate username and passwrod withe seperator.
-                string dataToSave = Username + "#//#"+Encryption(Password);
-
-                // Create a StreamWriter to write to the file
-                using (StreamWriter writer = new StreamWriter(filePath))
+                if(Username != "" && Password !="")
                 {
-                    // Write the data to the file
-                    writer.WriteLine(dataToSave);
-                   
-                  return true;
+                    //this will create a registry Valuename (username) with it's value 
+                    Registry.SetValue(RegPath, "Username", Username, RegistryValueKind.String);
+                    //this will create a registry Valuename (Password) with it's value Encrypted
+                    Registry.SetValue(RegPath, "Password", Encryption(Password), RegistryValueKind.String);
                 }
+                else
+                {
+                    //this will create a registry Valuename (username) with empty value
+                    Registry.SetValue(RegPath, "Username", "", RegistryValueKind.String);
+                    //this will create a registry Valuename (Password) with empty value
+                    Registry.SetValue(RegPath, "Password", "", RegistryValueKind.String);
+                }
+                
             }
-            catch (Exception ex)
+            catch
             {
-               MessageBox.Show ($"An error occurred: {ex.Message}");
-                return false;
+               return false;
             }
-            
+
+            return true;
         }
 
         public static bool GetStoredCredential(ref string Username, ref string Password)
         {
             //this will get the stored username and password and will return true if found and false if not found.
+
+            //Registry path
+            string RegPath = @"HKEY_CURRENT_USER\Software\DVLD";
+            
             try
             {
-                //gets the current project's directory
-                string currentDirectory = System.IO.Directory.GetCurrentDirectory();
+                Username = Registry.GetValue(RegPath, "Username", "") as string;
+                string EncryptedPassword = Registry.GetValue(RegPath, "Password", "") as string;
 
-                // Path for the file that contains the credential.
-                string filePath  = currentDirectory + "\\data.txt";
-
-                // Check if the file exists before attempting to read it
-                if (File.Exists(filePath))
+                if (EncryptedPassword != null)
                 {
-                    // Create a StreamReader to read from the file
-                    using (StreamReader reader = new StreamReader(filePath))
-                    {
-                        // Read data line by line until the end of the file
-                        string line;
-                        while ((line = reader.ReadLine()) != null)
-                        {
-                            Console.WriteLine(line); // Output each line of data to the console
-                            string[] result = line.Split(new string[] { "#//#" }, StringSplitOptions.None);
-
-                            Username = result[0];
-                            Password = Decryption(result[1]);
-                        }
-                        return true;
-                    }
+                    Password = Decryption(EncryptedPassword);
                 }
                 else
                 {
-                    return false;
+                    Password = "";
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show ($"An error occurred: {ex.Message}");
-                return false;   
+                return false;
             }
 
+            return true;
+           
         }
 
 
