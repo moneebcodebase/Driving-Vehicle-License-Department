@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static DVLD_DataAccess.clsCountryData;
-using System.Net;
-using System.Security.Policy;
+
 
 namespace DVLD_DataAccess
 {
@@ -57,7 +51,9 @@ namespace DVLD_DataAccess
                 }
                 catch (Exception ex)
                 {
-                    //Console.WriteLine("Error: " + ex.Message);
+                    // Logging the Exception into the Event Logger
+                    string message = $"An Exception happend in clsLicenseClass class when trying to get license class info. {ex.Message}";
+                    clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                     isFound = false;
                 }
                 finally
@@ -111,7 +107,9 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsLicenseClass class when trying to get license class info by class name. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 isFound = false;
             }
             finally
@@ -153,8 +151,10 @@ namespace DVLD_DataAccess
 
                 catch (Exception ex)
                 {
-                    // Console.WriteLine("Error: " + ex.Message);
-                }
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsLicenseClass class when trying to get all license classes info. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
+            }
                 finally
                 {
                     connection.Close();
@@ -207,7 +207,9 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsLicenseClass class when trying to add new license class. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
 
             }
 
@@ -255,7 +257,9 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsLicenseClass class when trying to update license class info. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 return false;
             }
 

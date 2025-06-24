@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -88,8 +87,10 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
-                
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsPerson class when trying to get Person by id. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
+
                 isFound = false;
             }
             finally
@@ -181,7 +182,9 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsPerson class when trying to get Person by National NO. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 isFound = false;
             }
             finally
@@ -253,7 +256,9 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsPerson class when trying to add new Person. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
 
             }
 
@@ -331,7 +336,9 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsPerson class when trying update Person. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 return false;
             }
 
@@ -396,7 +403,9 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                // Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsPerson class when trying to get all People. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
             }
             finally
             {
@@ -430,7 +439,9 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                // Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsPerson class when trying to delete Person. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
             }
             finally
             {
@@ -466,7 +477,9 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsPerson class when trying to find a person. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 isFound = false;
             }
             finally
@@ -500,7 +513,9 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsPerson class when trying find a person . {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 isFound = false;
             }
             finally

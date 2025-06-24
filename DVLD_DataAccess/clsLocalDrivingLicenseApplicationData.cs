@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-using System.Runtime.InteropServices.WindowsRuntime;
+
 
 namespace DVLD_DataAccess
 {
@@ -57,7 +52,9 @@ namespace DVLD_DataAccess
                 }
                 catch (Exception ex)
                 {
-                    //Console.WriteLine("Error: " + ex.Message);
+                    // Logging the Exception into the Event Logger
+                    string message = $"An Exception happend in clsLocalDrivingLicenseApplicationsclass when trying to get Local Driving License Applications by id. {ex.Message}";
+                    clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                     isFound = false;
                 }
                 finally
@@ -109,7 +106,9 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsLocalDrivingLicenseApplicationsclass when trying to get Local Driving License Applications by application id. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 isFound = false;
             }
             finally
@@ -154,7 +153,9 @@ namespace DVLD_DataAccess
 
                 catch (Exception ex)
                 {
-                    // Console.WriteLine("Error: " + ex.Message);
+                     // Logging the Exception into the Event Logger
+                    string message = $"An Exception happend in clsLocalDrivingLicenseApplicationsclass when trying to get all Local Driving License Applications. {ex.Message}";
+                    clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 }
                 finally
                 {
@@ -198,7 +199,9 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsLocalDrivingLicenseApplicationsclass when trying to add Local Driving License Applications. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
 
             }
 
@@ -239,7 +242,9 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsLocalDrivingLicenseApplicationsclass when trying to update Local Driving License Applications. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 return false;
             }
 
@@ -275,7 +280,9 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                // Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsLocalDrivingLicenseApplicationsclass when trying to delete Local Driving License Applications. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
             }
             finally
             {
@@ -325,7 +332,9 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsLocalDrivingLicenseApplicationsclass in (DoesPassTestTypes). {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
 
             }
 
@@ -375,7 +384,9 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsLocalDrivingLicenseApplicationsclass in (DoesAttendedTestTypes). {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
 
             }
 
@@ -425,7 +436,9 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsLocalDrivingLicenseApplicationsclass in (TotalTrialPerTest). {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
 
             }
 
@@ -475,7 +488,9 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsLocalDrivingLicenseApplicationsclass in (IsThereAnActiveSheduledTest). {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
 
             }
 

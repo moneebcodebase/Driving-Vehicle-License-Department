@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static DVLD_DataAccess.clsCountryData;
-using System.Net;
-using System.Security.Policy;
+
 
 namespace DVLD_DataAccess
 {
@@ -80,7 +74,9 @@ namespace DVLD_DataAccess
                 }
                 catch (Exception ex)
                 {
-                    //Console.WriteLine("Error: " + ex.Message);
+                    // Logging the Exception into the Event Logger
+                    string message = $"An Exception happend in clsDetainedLicense class when trying to get Detained lincense info by ID. {ex.Message}";
+                    clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                     isFound = false;
                 }
                 finally
@@ -158,7 +154,9 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsDetainedLicense class when trying to get Detained lincense info by licnese ID. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 isFound = false;
             }
             finally
@@ -198,7 +196,9 @@ namespace DVLD_DataAccess
 
                 catch (Exception ex)
                 {
-                    // Console.WriteLine("Error: " + ex.Message);
+                    // Logging the Exception into the Event Logger
+                    string message = $"An Exception happend in clsDetainedLicense class when trying to get all Detained lincenses. {ex.Message}";
+                    clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 }
                 finally
                 {
@@ -255,7 +255,9 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsDetainedLicense class when trying to add new Detained lincense. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
 
             }
 
@@ -301,7 +303,9 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsDetainedLicense class when trying to update Detained lincense info. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 return false;
             }
 
@@ -341,7 +345,9 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsDetainedLicense class when trying to release Detained lincense. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 return false;
             }
 
@@ -383,7 +389,9 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsDetainedLicense class when trying to check if licnese is Detained. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
 
             }
 

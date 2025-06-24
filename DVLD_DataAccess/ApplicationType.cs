@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static DVLD_DataAccess.clsCountryData;
-using System.Net;
-using System.Security.Policy;
+
 
 namespace DVLD_DataAccess
 {
@@ -45,7 +39,7 @@ namespace DVLD_DataAccess
 
 
 
-                }
+                    }
                     else
                     {
                         // The record was not found
@@ -58,8 +52,12 @@ namespace DVLD_DataAccess
                 }
                 catch (Exception ex)
                 {
-                    //Console.WriteLine("Error: " + ex.Message);
                     isFound = false;
+
+                    // Logging the Exception into the Event Logger
+                    string message = $"An Exception happend in ApplicaitonTypes class when trying to get Application Type by id. {ex.Message}";
+                    
+                    clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 }
                 finally
                 {
@@ -98,7 +96,10 @@ namespace DVLD_DataAccess
 
                 catch (Exception ex)
                 {
-                    // Console.WriteLine("Error: " + ex.Message);
+                    // Logging the Exception into the Event Logger
+                    string message = $"An Exception happend in ApplicaitonTypes class when trying to get all Application Types. {ex.Message}";
+                    
+                    clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 }
                 finally
                 {
@@ -139,7 +140,10 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in ApplicaitonTypes class when trying to add new Applicatiuon Type. {ex.Message}";
+
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
 
             }
 
@@ -178,7 +182,10 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in ApplicaitonTypes class when trying to update Applicatiuon Type. {ex.Message}";
+
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 return false;
             }
 

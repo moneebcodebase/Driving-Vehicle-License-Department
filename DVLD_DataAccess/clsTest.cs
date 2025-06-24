@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static DVLD_DataAccess.clsCountryData;
-using System.Net;
-using System.Security.Policy;
-using static System.Net.Mime.MediaTypeNames;
-using System.Reflection;
+
 
 namespace DVLD_DataAccess
 {
@@ -64,7 +56,9 @@ namespace DVLD_DataAccess
                 }
                 catch (Exception ex)
                 {
-                    //Console.WriteLine("Error: " + ex.Message);
+                    // Logging the Exception into the Event Logger
+                    string message = $"An Exception happend in clsTests class when trying to get Test info. {ex.Message}";
+                    clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                     isFound = false;
                 }
                 finally
@@ -137,7 +131,10 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsTests class when trying to get last Test by perosn info. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 isFound = false;
             }
             finally
@@ -178,7 +175,10 @@ namespace DVLD_DataAccess
 
                 catch (Exception ex)
                 {
-                    // Console.WriteLine("Error: " + ex.Message);
+                    
+                    // Logging the Exception into the Event Logger
+                    string message = $"An Exception happend in clsTests class when trying to get all Tests info. {ex.Message}";
+                    clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 }
                 finally
                 {
@@ -234,7 +234,10 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsTests class when trying to add new Test. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
 
             }
 
@@ -278,7 +281,10 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsTests class when trying to update Test info. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 return false;
             }
 
@@ -320,7 +326,10 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+
+                // Logging the Exception into the Event Logger
+                string message = $"An Exception happend in clsTests class when trying to get passed Test count. {ex.Message}";
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
 
             }
 

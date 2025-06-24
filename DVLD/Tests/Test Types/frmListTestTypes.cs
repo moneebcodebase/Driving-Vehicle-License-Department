@@ -33,17 +33,21 @@ namespace DVLD.Tests
             dgvTestTypes.DataSource = _dtAllTestTypes;
             lblRecordsCount.Text = dgvTestTypes.Rows.Count.ToString();
 
-            dgvTestTypes.Columns[0].HeaderText = "ID";
-            dgvTestTypes.Columns[0].Width = 120;
+            if(dgvTestTypes.Rows.Count>0)
+            {
+                dgvTestTypes.Columns[0].HeaderText = "ID";
+                dgvTestTypes.Columns[0].Width = 120;
 
-            dgvTestTypes.Columns[1].HeaderText = "Title";
-            dgvTestTypes.Columns[1].Width = 200;
+                dgvTestTypes.Columns[1].HeaderText = "Title";
+                dgvTestTypes.Columns[1].Width = 200;
 
-            dgvTestTypes.Columns[2].HeaderText = "Description";
-            dgvTestTypes.Columns[2].Width = 400;
+                dgvTestTypes.Columns[2].HeaderText = "Description";
+                dgvTestTypes.Columns[2].Width = 400;
 
-            dgvTestTypes.Columns[3].HeaderText = "Fees";
-            dgvTestTypes.Columns[3].Width = 100;
+                dgvTestTypes.Columns[3].HeaderText = "Fees";
+                dgvTestTypes.Columns[3].Width = 100;
+            }
+            
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)

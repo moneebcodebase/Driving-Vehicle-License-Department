@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
+
 
 namespace DVLD_DataAccess
 {
@@ -51,6 +47,7 @@ namespace DVLD_DataAccess
                     }
                     else
                     {
+                       
                         // The record was not found
                         isFound = false;
                     }
@@ -61,7 +58,10 @@ namespace DVLD_DataAccess
                 }
                 catch (Exception ex)
                 {
-                    //Console.WriteLine("Error: " + ex.Message);
+                    // Logging the Exception into the Event Logger
+                    string message = $"An Exception happend in clsApplications class when trying to get Application info by id. {ex.Message}";
+                    
+                    clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                     isFound = false;
                 }
                 finally
@@ -101,7 +101,10 @@ namespace DVLD_DataAccess
 
                 catch (Exception ex)
                 {
-                    // Console.WriteLine("Error: " + ex.Message);
+                    // Logging the Exception into the Event Logger
+                    string message = $"An Exception happend in clsApplicaiton class when trying to get Applications. {ex.Message}";
+                    
+                    clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 }
                 finally
                 {
@@ -158,7 +161,11 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+
+                string message = $"An Exception happend in clsApplicaiton class when trying to add new Applications. {ex.Message}";
+
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
 
             }
 
@@ -210,7 +217,11 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+
+                string message = $"An Exception happend in clsApplicaiton class when trying to update Applications. {ex.Message}";
+
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 return false;
             }
 
@@ -245,7 +256,11 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                // Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+
+                string message = $"An Exception happend in clsApplicaiton class when trying to delete Applications. {ex.Message}";
+
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
             }
             finally
             {
@@ -281,7 +296,11 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+
+                string message = $"An Exception happend in clsApplicaiton class when trying to ckeck if the Applications Exists. {ex.Message}";
+
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 isFound = false;
             }
             finally
@@ -325,7 +344,11 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+
+                string message = $"An Exception happend in clsApplicaiton class when trying to get active Applications. {ex.Message}";
+
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 return ActiveApplicationID;
             }
             finally
@@ -369,7 +392,11 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+
+                string message = $"An Exception happend in clsApplicaiton class when trying to get Active Applications for a license class. {ex.Message}";
+
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 return ActiveApplicationID;
             }
             finally
@@ -407,7 +434,11 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                // Logging the Exception into the Event Logger
+
+                string message = $"An Exception happend in clsApplicaiton class when trying to update status. {ex.Message}";
+
+                clsDataAccessSettings.EventLogger("DVLD", message, clsDataAccessSettings.enEventType.Error);
                 return false;
             }
 

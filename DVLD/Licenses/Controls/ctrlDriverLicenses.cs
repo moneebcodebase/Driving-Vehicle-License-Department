@@ -95,6 +95,12 @@ namespace DVLD.Licenses.Local_Licenses.Controls
             _DriverID = DriverID;
             _Driver = clsDriver.FindByDriverID(_DriverID);
 
+            if(_Driver == null)
+            {
+                MessageBox.Show($"ther is no dirver with id = {_DriverID}" , "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+
             _LoadLocalLicenseInfo();
             _LoadInternationalLicenseInfo();
 
@@ -104,10 +110,14 @@ namespace DVLD.Licenses.Local_Licenses.Controls
         {
             
             _Driver = clsDriver.FindByPersonID(PersonID);
-            if (_Driver != null)
+
+            if(_Driver == null)
             {
-                _DriverID = clsDriver.FindByPersonID(PersonID).DriverID;
+                MessageBox.Show($"ther is no dirver linked with person id = {PersonID}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            _DriverID = _Driver.DriverID;
            
             _LoadLocalLicenseInfo();
             _LoadInternationalLicenseInfo();
@@ -124,7 +134,7 @@ namespace DVLD.Licenses.Local_Licenses.Controls
         public void Clear()
         {
             _dtDriverLocalLicensesHistory.Clear();
-
+            _dtDriverInternationalLicensesHistory.Clear();
         }
 
         private void InternationalLicenseHistorytoolStripMenuItem_Click(object sender, EventArgs e)

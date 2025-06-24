@@ -68,13 +68,6 @@ namespace DVLD.User
                 txtFilterValue.Visible = (cbFilterBy.Text !="None") ;
                 cbIsActive.Visible = false;
 
-                if (cbFilterBy.Text == "None")
-                {
-                    txtFilterValue.Enabled = false;
-                }
-                else
-                    txtFilterValue.Enabled = true;
-
                 txtFilterValue.Text = "";
                 txtFilterValue.Focus();
             }
